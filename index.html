@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio · Analista de Dados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F8F7F4;
+    --surface: #FFFFFF;
+    --ink: #1A1916;
+    --ink-muted: #6B6860;
+    --ink-faint: #B0AEA7;
+    --accent: #1A1916;
+    --accent-light: #F0EDE7;
+    --border: #E4E2DC;
+    --tag-bg: #EDEAE3;
+    --radius: 4px;
+    --max: 760px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(248, 247, 244, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* SECTIONS */
+  section {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  /* HERO */
+  #hero {
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--ink-faint);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--ink);
+    color: #fff;
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.82; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--ink-muted);
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: border-color 0.2s, color 0.2s;
+    background: var(--surface);
+  }
+
+  .btn-ghost:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+  /* SKILL CHIPS */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 3rem;
+  }
+
+  .chip {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--ink-muted);
+    background: var(--tag-bg);
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+
+  /* SECTION HEADINGS */
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* PROJECTS */
+  #projetos { border-bottom: 1px solid var(--border); }
+
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 1rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+    cursor: pointer;
+  }
+
+  .project-item:hover { opacity: 0.72; }
+
+  .project-num {
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    font-weight: 300;
+    max-width: 520px;
+  }
+
+  .project-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    background: var(--tag-bg);
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    font-weight: 400;
+  }
+
+  .project-arrow {
+    font-size: 1.1rem;
+    color: var(--ink-faint);
+    margin-top: 0.2rem;
+    transition: transform 0.2s;
+  }
+
+  .project-item:hover .project-arrow {
+    transform: translate(3px, -3px);
+    color: var(--ink);
+  }
+
+  /* SOBRE */
+  #sobre { border-bottom: 1px solid var(--border); }
+
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .sobre-text p {
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .skill-group { margin-bottom: 1.5rem; }
+
+  .skill-group-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.6rem;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skill-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .skill-name {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    width: 100px;
+    flex-shrink: 0;
+    font-weight: 400;
+  }
+
+  .skill-bar-bg {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: var(--ink);
+    border-radius: 999px;
+    transform-origin: left;
+    animation: grow 1s ease forwards;
+    transform: scaleX(0);
+  }
+
+  @keyframes grow { to { transform: scaleX(1); } }
+
+  /* CONTATO */
+  #contato { text-align: center; }
+
+  .contato-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .contato-sub {
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    font-weight: 300;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">Seu Nome</a>
+    <ul class="nav-links">
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Analista de Dados</p>
+  <h1>Transformando dados<br>em <em>decisões claras</em></h1>
+  <p class="hero-bio">
+    Trabalho com análise exploratória, visualização e storytelling com dados para apoiar
+    decisões estratégicas de negócio. Especializado em Python, SQL, Power BI e Excel.
+  </p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#projetos">Ver projetos →</a>
+    <a class="btn-ghost" href="#contato">Entrar em contato</a>
+  </div>
+  <div class="chips">
+    <span class="chip">Python</span>
+    <span class="chip">SQL</span>
+    <span class="chip">Power BI</span>
+    <span class="chip">Tableau</span>
+    <span class="chip">Excel</span>
+    <span class="chip">Pandas</span>
+    <span class="chip">Matplotlib</span>
+    <span class="chip">Seaborn</span>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos">
+  <p class="section-label">Projetos selecionados</p>
+  <div class="project-list">
+
+    <a class="project-item" href="https://github.com/seu-usuario/projeto-1" target="_blank">
+      <div>
+        <p class="project-num">01</p>
+        <h2 class="project-title">Análise de Churn de Clientes</h2>
+        <p class="project-desc">
+          Identificação dos principais fatores que levam ao cancelamento de serviços,
+          com segmentação de clientes e painel interativo no Power BI.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Power BI</span>
+        </div>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a class="project-item" href="https://github.com/seu-usuario/projeto-2" target="_blank">
+      <div>
+        <p class="project-num">02</p>
+        <h2 class="project-title">Dashboard de Vendas Regionais</h2>
+        <p class="project-desc">
+          Painel de vendas com drill-down por região, categoria e período,
+          integrando múltiplas fontes via SQL e visualizado no Tableau.
+        </p>
+        <div class="project-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Excel</span>
+        </div>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a class="project-item" href="https://github.com/seu-usuario/projeto-3" target="_blank">
+      <div>
+        <p class="project-num">03</p>
+        <h2 class="project-title">Análise Exploratória — Dados Públicos</h2>
+        <p class="project-desc">
+          EDA completa sobre dataset público do IBGE, com limpeza de dados,
+          correlações e visualizações publicadas em relatório Jupyter Notebook.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Seaborn</span>
+          <span class="tag">Jupyter</span>
+        </div>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a class="project-item" href="https://github.com/seu-usuario/projeto-4" target="_blank">
+      <div>
+        <p class="project-num">04</p>
+        <h2 class="project-title">Automação de Relatórios em Excel</h2>
+        <p class="project-desc">
+          Script Python que automatiza a geração semanal de relatórios Excel
+          com formatação condicional, gráficos e envio por e-mail.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">openpyxl</span>
+          <span class="tag">Excel</span>
+        </div>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <p class="section-label">Sobre mim</p>
+  <div class="sobre-grid">
+    <div class="sobre-text">
+      <p>
+        Sou analista de dados com foco em extrair insights acionáveis de dados complexos.
+        Gosto de combinar rigor técnico com comunicação clara para que as análises
+        realmente impactem decisões.
+      </p>
+      <p>
+        Tenho experiência em análise exploratória, modelagem de KPIs,
+        construção de dashboards e automação de relatórios. Estou sempre
+        em busca de novos problemas para resolver com dados.
+      </p>
+      <div style="margin-top:1.5rem;">
+        <a class="btn-ghost" href="curriculo.pdf" style="font-size:0.85rem; padding: 0.55rem 1.1rem;" download>
+          Baixar currículo
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group">
+        <p class="skill-group-label">Linguagens & Consultas</p>
+        <div class="skill-items">
+          <div class="skill-row">
+            <span class="skill-name">Python</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%; animation-delay:0.1s"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">SQL</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%; animation-delay:0.2s"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-label">Visualização</p>
+        <div class="skill-items">
+          <div class="skill-row">
+            <span class="skill-name">Power BI</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%; animation-delay:0.3s"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">Tableau</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%; animation-delay:0.4s"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">Excel</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%; animation-delay:0.5s"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <h2 class="contato-title">Vamos trabalhar juntos?</h2>
+  <p class="contato-sub">Aberto a oportunidades, freelas e conversas sobre dados.</p>
+  <div class="contact-links">
+    <a class="btn-primary" href="mailto:seuemail@email.com">seuemail@email.com</a>
+    <a class="btn-ghost" href="https://linkedin.com/in/seu-linkedin" target="_blank">LinkedIn ↗</a>
+    <a class="btn-ghost" href="https://github.com/seu-usuario" target="_blank">GitHub ↗</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Seu Nome · Portfólio de Análise de Dados
+</footer>
+
+</body>
+</html>
