@@ -217,16 +217,26 @@ h1 em {
 }
 
 .project-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
-  gap: 1rem;
+  display: block;
   padding: 2rem 0;
   border-top: 1px solid var(--border);
   text-decoration: none;
   color: inherit;
   transition: opacity 0.2s;
   cursor: pointer;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.project-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 1rem;
 }
 
 .project-item:hover { opacity: 0.72; }
@@ -283,6 +293,19 @@ h1 em {
   transform: translate(3px, -3px);
   color: var(--ink);
 }
+
+.project-preview {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  background: var(--tag-bg);
+  transition: opacity 0.2s;
+}
+
+.project-item:hover .project-preview { opacity: 0.85; }
 
 /* SOBRE */
 #sobre { border-bottom: 1px solid var(--border); }
